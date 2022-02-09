@@ -1,0 +1,58 @@
+[
+        {
+            "location": "DD6",
+            "name": "Reviac",
+            "level": 225,
+            "accuracy": 1800,
+            "evasion": 1488
+        },
+        {
+            "location": "DD6",
+            "name": "Boss finaux",
+            "level": 220,
+            "accuracy": 378,
+            "evasion": 1025
+        },
+        {
+            "location": "DD6",
+            "name": "mobs démons",
+            "level": 215,
+            "accuracy": 1535,
+            "evasion": 600
+        },
+        {
+            "location": "DD6",
+            "name": "mobs démons",
+            "level": 215,
+            "accuracy": 625,
+            "evasion": 600
+        },
+        {
+            "location": "DD6",
+            "name": "Boss intermédiaire",
+            "level": 220,
+            "accuracy": 1800,
+            "evasion": 1156
+        },
+        {
+            "location": "DD6",
+            "name": "Kainen",
+            "level": 215,
+            "accuracy": 324,
+            "evasion": 945
+        },
+        {
+            "location": "DD6",
+            "name": "mobs dragon",
+            "level": 215,
+            "accuracy": 1535,
+            "evasion": 600
+        },
+        {
+            "location": "DD6",
+            "name": "mobs dragon",
+            "level": 215,
+            "accuracy": 625,
+            "evasion": 600
+        }
+    ]

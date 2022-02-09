@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculateur d'esquive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="content">
+        <h1>Calculateur chances d'esquive</h1>
+        <form id="charDetails">
+            <table>
+                <tr>
+                    <td><label for="charLvlLabel">Niveau personnage</label></td>
+                    <td><input type="number" id="charLvl" min=1 max=230 step="1"></td>
+                </tr>
+                <tr>
+                    <td><label for="charAccuracyLabel">Précision personnage</label></td>
+                    <td><input type="number" id="charAccuracy" min=1 max=15000 step="1"></td>
+                </tr>
+                <tr>
+                    <td><label for="charEvasionLabel">Esquive personnage</label></td>
+                    <td><input type="number" id="charEvasion" min=1 max=15000 step="1"></td>
+                </tr>
+                <tr>
+                    <td><input type="reset" value="Vider les champs" class="btn">&nbsp;</td>
+                    <td><input type="submit" value="Calculer" class="btn">&nbsp;</td>
+                </tr>
+            </table>
+        </form>
+        <br><br>
+
+        <h1>Resultats</h1>
+        <table id="resultTable" class="maTable">
+            <tr>
+                <th>Lieu</th>
+                <th>Mob</th>
+                <th>Level</th>
+                <th>Coups donnés</th>
+                <th>Coups reçus</th>
+            </tr>
+        </table>
+
+
+
+
+        <!-- <p id="Reviac"></p>
+        <p id="Hagen"></p> -->
+    </div>
+    <!-- <script src="jquery-csv.js"></script> -->
+    <!-- <script type="text/json" src="mobs.json"></script> -->
+    <script src="main.js"></script>
+</body>
+
+</html>
