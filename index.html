@@ -13,27 +13,53 @@
         <form id="charDetails">
             <table>
                 <tr>
-                    <td><label for="charLvlLabel">Niveau personnage</label></td>
+                    <td></td>
+                    <th>Attaquant</th>
+                    <th>Défenseur</th>
+                </tr>
+                <tr>
+                    <th><label for="charLvlLabel">Niveau</label></th>
                     <td><input type="number" id="charLvl" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="charLvlTarget" min=1 max=230 step="1"></td>
                 </tr>
                 <tr>
-                    <td><label for="charAccuracyLabel">Précision personnage</label></td>
+                    <th><label for="charAccuracyLabel">Précision</label></th>
                     <td><input type="number" id="charAccuracy" min=1 max=15000 step="1"></td>
+                    <td><input type="number" id="charAccuracyTarget" min=1 max=15000 step="1"></td>
                 </tr>
                 <tr>
-                    <td><label for="charEvasionLabel">Esquive personnage</label></td>
+                    <th><label for="charEvasionLabel">Esquive</label></th>
                     <td><input type="number" id="charEvasion" min=1 max=15000 step="1"></td>
+                    <td><input type="number" id="charEvasionTarget" min=1 max=15000 step="1"></td>
                 </tr>
                 <tr>
+                    <td><input type="checkbox" id="pve">&nbsp;</td>
                     <td><input type="reset" value="Vider les champs" class="btn">&nbsp;</td>
                     <td><input type="submit" value="Calculer" class="btn">&nbsp;</td>
                 </tr>
             </table>
         </form>
         <br><br>
+    </div>
 
-        <h1>Resultats</h1>
-        <table id="resultTable" class="maTable">
+    <div id="resultatpvp">
+        <h1>Resultats PvP</h1>
+        <table id="resultTablePVP" class="maTable">
+            <tr>
+                <th>toucher </th>
+                <th>être touché </th>
+            </tr>
+            <tr>
+                <td id="mainPVP">N/A</th>
+                <td id="targetPVP">N/A</th>
+            </tr>
+        </table>
+
+    </div>
+
+    <div id="resultatpve" style="display: none;">
+        <h1>Resultats PvE</h1>
+        <table id="resultTablePVE" class="maTable">
             <tr>
                 <th>Lieu</th>
                 <th>Mob</th>
@@ -41,16 +67,21 @@
                 <th>Coups donnés</th>
                 <th>Coups reçus</th>
             </tr>
+            <tr>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+                <td>N/A</td>
+            </tr>
         </table>
 
-
-
-
-        <!-- <p id="Reviac"></p>
-        <p id="Hagen"></p> -->
     </div>
-    <!-- <script src="jquery-csv.js"></script> -->
-    <!-- <script type="text/json" src="mobs.json"></script> -->
+
+
+
+
+
     <script src="main.js"></script>
 </body>
 

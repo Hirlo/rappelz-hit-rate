@@ -13,19 +13,34 @@ body {
     display: inline-block;
 }
 
-#resultTable {
+#resultatpvp {
+    text-align: center;
+    font-size: 18px;
+    border-radius: 40px;
+}
+#resultTablePVP {
     display: inline-block;
 }
 
-.maTable, th {
+
+#resultatpve {
+    text-align: center;
+    font-size: 18px;
+    border-radius: 40px;
+}
+#resultTablePVE {
+    display: inline-block;
+}
+
+th {
     border: 1px solid black;
     border-radius: 5px;
 }
 
-td {
+/* td {
     padding-left: 20px;
     padding-bottom: 10px;
-}
+} */
 
 input {
     font-size: 16px;

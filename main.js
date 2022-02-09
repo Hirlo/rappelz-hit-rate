@@ -24,7 +24,7 @@ document.onreadystatechange = () => {
     }
 
 
-    function showRates(character, mob) {
+    function showRatesPVE(character, mob) {
         var character = character;
         var mob = mob;
         
@@ -32,7 +32,7 @@ document.onreadystatechange = () => {
 
         results = getRates(character, mob);
 
-        var table = document.getElementById("resultTable");
+        var table = document.getElementById("resultTablePVE");
 
         var row = table.insertRow(-1);
 
@@ -49,6 +49,25 @@ document.onreadystatechange = () => {
         cell5.innerHTML = results.fromTarget + "%";
       }
 
+      function showRatesPVP(character, characterTarget) {
+        var character = character;
+        var characterTarget = characterTarget;
+        
+        console.log(characterTarget.name)
+
+        results = getRates(character, characterTarget);
+
+        var table = document.getElementById("resultTablePVP");
+
+        var row = table.insertRow(-1);
+
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        
+        cell1.innerHTML = results.toTarget + "%";
+        cell2.innerHTML = results.fromTarget + "%";
+      }
+
       function clearTable(table) {
         var rows = table.rows;
         var i = rows.length;
@@ -61,14 +80,22 @@ document.onreadystatechange = () => {
 
     function calculate() {
 
-        var table = document.getElementById("resultTable");
-
-        clearTable(table)
+        var tablePVE = document.getElementById("resultTablePVE");
+        clearTable(tablePVE)
+        var tablePVP = document.getElementById("resultTablePVP");
+        clearTable(tablePVP)
 
         const character = new Object();
         character.level = Number(document.getElementById("charLvl").value);
         character.accuracy = Number(document.getElementById("charAccuracy").value);
         character.evasion = Number(document.getElementById("charEvasion").value);
+
+        const characterTarget = new Object();
+        characterTarget.level = Number(document.getElementById("charLvlTarget").value);
+        characterTarget.accuracy = Number(document.getElementById("charAccuracyTarget").value);
+        characterTarget.evasion = Number(document.getElementById("charEvasionTarget").value);
+
+        showRatesPVP(character, characterTarget)
 
         var requestURL = './mobs.json';
         var request = new XMLHttpRequest();
@@ -79,7 +106,7 @@ document.onreadystatechange = () => {
         request.onload = function() {
             var mobs = request.response;
             for (var mob of mobs) {
-                showRates(character, mob);
+                showRatesPVE(character, mob);
             }
           }
     }
