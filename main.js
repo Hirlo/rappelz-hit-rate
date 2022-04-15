@@ -1,5 +1,5 @@
 document.onreadystatechange = () => {
-    function getHitRate(attLevel, defLevel, accuracy, evasion) {
+    function hitRate(attLevel, defLevel, accuracy, evasion) {
         let bonus = 0;
         let diffLevel = 2 * ( attLevel - defLevel );
         let evasionRatio = ( accuracy / evasion );
@@ -9,7 +9,7 @@ document.onreadystatechange = () => {
         return Math.round(Math.min(100, hitRate));
     }
 
-    function getRates( main, target ) {
+    function getHitRate( main, target ) {
         let mainLevel = main.level;
         let mainAccuracy = main.accuracy;
         let mainEvasion = main.evasion;
@@ -17,10 +17,10 @@ document.onreadystatechange = () => {
         let targetAccuracy = target.accuracy;
         let targetEvasion = target.evasion;
 
-        let toTarget = getHitRate( mainLevel, targetLevel, mainAccuracy, targetEvasion);
-        let fromTarget = getHitRate( targetLevel, mainLevel, targetAccuracy, mainEvasion);
+        let char2target = hitRate( mainLevel, targetLevel, mainAccuracy, targetEvasion);
+        let target2char = hitRate( targetLevel, mainLevel, targetAccuracy, mainEvasion);
 
-        return { toTarget: toTarget, fromTarget: fromTarget }
+        return { char2target: char2target, target2char: target2char }
     }
 
 
@@ -82,33 +82,63 @@ document.onreadystatechange = () => {
 
         var tablePVE = document.getElementById("resultTablePVE");
         clearTable(tablePVE)
-        var tablePVP = document.getElementById("resultTablePVP");
-        clearTable(tablePVP)
+        // var tablePVP = document.getElementById("resultTablePVP");
+        // clearTable(tablePVP)
 
         const character = new Object();
         character.level = Number(document.getElementById("charLvl").value);
+        character.attaque = Number(document.getElementById("charAtq").value);
+        character.defense = Number(document.getElementById("charDef").value);
         character.accuracy = Number(document.getElementById("charAccuracy").value);
         character.evasion = Number(document.getElementById("charEvasion").value);
+        character.blocage = Number(document.getElementById("charBloc").value);
+        character.blocagePercent = Number(document.getElementById("charBlocPercent").value);
+        character.blocagePerfect = Number(document.getElementById("charBlocPerfect").value);
 
-        const characterTarget = new Object();
-        characterTarget.level = Number(document.getElementById("charLvlTarget").value);
-        characterTarget.accuracy = Number(document.getElementById("charAccuracyTarget").value);
-        characterTarget.evasion = Number(document.getElementById("charEvasionTarget").value);
+        const target = new Object();
+        target.level = Number(document.getElementById("targetLvl").value);
+        target.attaque = Number(document.getElementById("targetAtq").value);
+        target.defense = Number(document.getElementById("targetDef").value);
+        target.accuracy = Number(document.getElementById("targetAccuracy").value);
+        target.evasion = Number(document.getElementById("targetEvasion").value);
+        target.blocage = Number(document.getElementById("targetBloc").value);
+        target.blocagePercent = Number(document.getElementById("targetBlocPercent").value);
+        target.blocagePerfect = Number(document.getElementById("targetBlocPerfect").value);
 
-        showRatesPVP(character, characterTarget)
+        const hitRate = getHitRate(character, target);
+        const char2targetHitRate = hitRate.char2target + "%";
+        const target2charHitRate = hitRate.target2char + "%";
 
-        var requestURL = './mobs.json';
-        var request = new XMLHttpRequest();
-        request.open('GET', requestURL);
-        request.responseType = 'json';
-        request.send();
+        const BlocRate = getHitRate(character, target);
+        const char2targetBlocRate = BlocRate.char2target + "%";
+        const target2charBlocRate = BlocRate.target2char + "%";
+        
+        const damages = getHitRate(character, target);
+        const char2targetDamages = damages.char2target + "%";
+        const target2charDamages = damages.target2char + "%";
 
-        request.onload = function() {
-            var mobs = request.response;
-            for (var mob of mobs) {
-                showRatesPVE(character, mob);
-            }
-          }
+        document.getElementById("char2targetHitRate").innerHTML = char2targetHitRate;
+        document.getElementById("char2targetBlocRate").innerHTML = char2targetBlocRate;
+        document.getElementById("char2targetDamages").innerHTML = char2targetDamages;
+        
+        document.getElementById("target2charHitRate").innerHTML = target2charHitRate;
+        document.getElementById("target2charBlocRate").innerHTML = target2charBlocRate;
+        document.getElementById("target2charDamages").innerHTML = target2charDamages;
+
+        // showRatesPVP(character, target)
+
+        // var requestURL = './mobs.json';
+        // var request = new XMLHttpRequest();
+        // request.open('GET', requestURL);
+        // request.responseType = 'json';
+        // request.send();
+
+        // request.onload = function() {
+        //     var mobs = request.response;
+        //     for (var mob of mobs) {
+        //         showRatesPVE(character, mob);
+        //     }
+        //   }
     }
 
     document.getElementById("charDetails").onsubmit = (e) => {

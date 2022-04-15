@@ -9,7 +9,7 @@
 
 <body>
     <div id="content">
-        <h1>Calculateur chances d'esquive</h1>
+        <h1>Calculateur dégats</h1>
         <form id="charDetails">
             <table>
                 <tr>
@@ -20,17 +20,43 @@
                 <tr>
                     <th><label for="charLvlLabel">Niveau</label></th>
                     <td><input type="number" id="charLvl" min=1 max=230 step="1"></td>
-                    <td><input type="number" id="charLvlTarget" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="targetLvl" min=1 max=230 step="1"></td>
+                </tr>
+
+                <tr>
+                    <th><label for="charAtqLabel">Attaque</label></th>
+                    <td><input type="number" id="charAtq" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="targetAtq" min=1 max=230 step="1"></td>
+                </tr>
+                <tr>
+                    <th><label for="charDefLabel">Défense</label></th>
+                    <td><input type="number" id="charDef" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="targetDef" min=1 max=230 step="1"></td>
                 </tr>
                 <tr>
                     <th><label for="charAccuracyLabel">Précision</label></th>
                     <td><input type="number" id="charAccuracy" min=1 max=15000 step="1"></td>
-                    <td><input type="number" id="charAccuracyTarget" min=1 max=15000 step="1"></td>
+                    <td><input type="number" id="targetAccuracy" min=1 max=15000 step="1"></td>
                 </tr>
                 <tr>
                     <th><label for="charEvasionLabel">Esquive</label></th>
                     <td><input type="number" id="charEvasion" min=1 max=15000 step="1"></td>
-                    <td><input type="number" id="charEvasionTarget" min=1 max=15000 step="1"></td>
+                    <td><input type="number" id="targetEvasion" min=1 max=15000 step="1"></td>
+                </tr>
+                <tr>
+                    <th><label for="charBlocLabel">Blocage</label></th>
+                    <td><input type="number" id="charBloc" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="targetBloc" min=1 max=230 step="1"></td>
+                </tr>
+                <tr>
+                    <th><label for="charBlocPercentLabel">Blocage %</label></th>
+                    <td><input type="number" id="charBlocPercent" min=1 max=230 step="1"></td>
+                    <td><input type="number" id="targetBlocPercent" min=1 max=230 step="1"></td>
+                </tr>
+                <tr>
+                    <th><label for="charBlocPerfectLabel">Blocage parfait</label></th>
+                    <td><input type="number" id="charBlocPerfect" min=1 max=15000 step="1"></td>
+                    <td><input type="number" id="targetBlocPerfect" min=1 max=15000 step="1"></td>
                 </tr>
                 <tr>
                     <td><input type="checkbox" id="pve">&nbsp;</td>
@@ -46,12 +72,24 @@
         <h1>Resultats PvP</h1>
         <table id="resultTablePVP" class="maTable">
             <tr>
-                <th>toucher </th>
-                <th>être touché </th>
+                <td></td>
+                <th>Attaquant -> Défenseur </th>
+                <th>Défenseur -> Attaquant </th>
             </tr>
             <tr>
-                <td id="mainPVP">N/A</th>
-                <td id="targetPVP">N/A</th>
+                <th>Hit rate</th>
+                <td id="char2targetHitRate">N/A</th>
+                <td id="target2charHitRate">N/A</th>
+            </tr>
+            <tr>
+                <th>bloc rate</th>
+                <td id="char2targetBlocRate">N/A</th>
+                <td id="target2charBlocRate">N/A</th>
+            </tr>
+            <tr>
+                <th>damages</th>
+                <td id="char2targetDamages">N/A</th>
+                <td id="target2charDamages">N/A</th>
             </tr>
         </table>
 
